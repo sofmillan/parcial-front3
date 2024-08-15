@@ -6,12 +6,12 @@ const Form = () => {
 
   const [book, setBook] = useState({
     name:"",
-    author:""
-  })
+    author:"",
+    img:""
+  });
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-
 
 
   const handleName = (event) =>{
@@ -19,19 +19,29 @@ const Form = () => {
   }
 
   const handleAuthor = (event) =>{
-    setBook({...book, author:event.target.value})
+    setBook({...book, author:event.target.value});
+  }
+
+  const handleImg = (event) =>{
+    setBook({...book, img:event.target.value});
   }
 
   const handleSubmit = (event) =>{
     event.preventDefault();
-    if(book.name.trim().length>=3 && book.author.length>=6){
+     const imgUrlRegex = /https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg)/gi;
+ 
+    if(book.name.trim().length>=3 
+      && book.author.length>=6 
+      && imgUrlRegex.test(book.img)){
       setSuccessMessage(true);
       setErrorMessage(false);
+
     }else{
       setErrorMessage(true);
-  
+      setSuccessMessage(false);
     }
   }
+
   return (
 	<>
   <form onSubmit={handleSubmit}  className={FormStyles.bookForm}>
@@ -44,14 +54,19 @@ const Form = () => {
       <label>Book author</label>
       <input type="text" value={book.author} onChange={handleAuthor}></input>
     </div>
+
+    <div>
+      <label>Book cover</label>
+      <input type="text" value={book.img} onChange={handleImg}></input>
+    </div>
  
-    <button>Submit</button>
+    <button type="submit">Submit</button>
   </form>
 
-  {errorMessage && <h2>valida tus datos</h2>}
-  {successMessage && <Card name={book.name} author={book.author} />}
+  {errorMessage && <h2 style={{color:'maroon'}}>Please verify your info</h2>}
+  {successMessage && <Card name={book.name} author={book.author} img={book.img}/>}
   </>
   )
 }
 
-export default Form
+export default Form;
