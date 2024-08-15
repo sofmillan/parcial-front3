@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-     <Card/>
+    <h2>Fill out the form with your favorite book</h2>
      <Form/>
     </>
   )

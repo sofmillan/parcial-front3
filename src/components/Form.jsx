@@ -1,5 +1,7 @@
 import { useState } from "react"
 import Card from "./Card"
+import FormStyles from "../styles/Form.module.css"
+
 const Form = () => {
 
   const [book, setBook] = useState({
@@ -27,15 +29,22 @@ const Form = () => {
       setErrorMessage(false);
     }else{
       setErrorMessage(true);
+  
     }
   }
   return (
 	<>
-  <form onSubmit={handleSubmit}>
-    <label>Book name</label>
-    <input type="text" value={book.name} onChange={handleName}></input>
-    <label>Book author</label>
-    <input type="text" value={book.author} onChange={handleAuthor}></input>
+  <form onSubmit={handleSubmit}  className={FormStyles.bookForm}>
+    <div>
+      <label>Book name</label>
+      <input type="text" value={book.name} onChange={handleName}></input>
+    </div>
+
+    <div>
+      <label>Book author</label>
+      <input type="text" value={book.author} onChange={handleAuthor}></input>
+    </div>
+ 
     <button>Submit</button>
   </form>
 
