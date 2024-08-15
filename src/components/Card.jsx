@@ -1,6 +1,7 @@
 import CardStyles from "../styles/Card.module.css"
 
 const Card = ({name, author, img}) => {
+  
   return (
 	<div className={CardStyles.bookCard}>
     <img src={img} alt="Book cover"/>

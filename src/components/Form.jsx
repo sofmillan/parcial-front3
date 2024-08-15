@@ -28,11 +28,13 @@ const Form = () => {
 
   const handleSubmit = (event) =>{
     event.preventDefault();
-     const imgUrlRegex = /https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg)/gi;
+
+    const imgUrlRegex = /https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg)/gi;
  
     if(book.name.trim().length>=3 
       && book.author.length>=6 
       && imgUrlRegex.test(book.img)){
+
       setSuccessMessage(true);
       setErrorMessage(false);
 
