@@ -59,7 +59,7 @@ const Form = () => {
 
     <div>
       <label>Book cover</label>
-      <input type="text" value={book.img} onChange={handleImg}></input>
+      <input type="url" value={book.img} onChange={handleImg}></input>
     </div>
  
     <button type="submit">Submit</button>
